@@ -26,7 +26,7 @@ public class BubbleSort {
         for (int i = 0; i < length; i++) {
             // Phải chạy lại từ đầu, và không cần duyệt qua các phần tử sắp xếp
             // Nhưng nếu lần đầu duyệt mảng đã sắp xếp, có cần chạy hết length không?
-            System.out.println("Lần "+ i + " : " + Arrays.toString(arr));
+            System.out.println("Sort lan thu "+ i + " : " + Arrays.toString(arr));
             for (int j = 0; j < length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
 //                    int temp = arr[j];
@@ -43,9 +43,25 @@ public class BubbleSort {
         for (int i = 0; i < length; i++) {
             // Thêm cờ để check, khi không phát hiện lần swap nào, nghĩa là đã sắp xếp
             boolean isSorted = true;
-            System.out.println("Lần "+ i + " : " + Arrays.toString(arr));
+            System.out.println("Sort lan thu "+ i + " : " + Arrays.toString(arr));
             for (int j = 0; j < length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
+                    SwapNumbers.swap(arr, j, j + 1);
+                    isSorted = false;
+                }
+            }
+            if(isSorted)
+                break;
+        }
+    }
+
+    public static void sortDescendingInteger(int arr[]) {
+        int length = arr.length;
+        for (int i = 0; i < length; i++) {
+            // Thêm cờ để check, khi không phát hiện lần swap nào, nghĩa là đã sắp xếp
+            boolean isSorted = true;
+            for (int j = 0; j < length - i - 1; j++) {
+                if (arr[j] < arr[j + 1]) {
                     SwapNumbers.swap(arr, j, j + 1);
                     isSorted = false;
                 }
@@ -65,5 +81,7 @@ public class BubbleSort {
         System.out.println("Before sorting: " + Arrays.toString(arr2));
         sortAscendingIntegerImprovement(arr2);
         System.out.println("After sorting: " + Arrays.toString(arr2));
+        sortDescendingInteger(arr2);
+        System.out.println("After sorting (descending): " + Arrays.toString(arr2));
     }
 }
